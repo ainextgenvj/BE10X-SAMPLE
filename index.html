@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Goa Weather Update</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #00aaff 0%, #80d0ff 100%);
+      color: #1b2a41;
+    }
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    h1 {
+      font-size: 2.8rem;
+      margin: 0;
+    }
+    .author {
+      margin-top: 8px;
+      color: #184e77;
+      font-size: 1rem;
+    }
+    .weather-card {
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 18px;
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+      padding: 30px;
+      line-height: 1.6;
+    }
+    .weather-card h2 {
+      margin-top: 0;
+      color: #0b3954;
+    }
+    .forecast {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .forecast-item {
+      background: #e8f1f8;
+      border-radius: 12px;
+      padding: 18px;
+      border: 1px solid #c5dbe7;
+    }
+    .forecast-item h3 {
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+      color: #0f4c75;
+    }
+    .forecast-item p {
+      margin: 4px 0;
+    }
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      color: #254e70;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>Goa Weather Update</h1>
+      <p class="author">by Vijay Kumar</p>
+    </header>
+    <div class="weather-card">
+      <h2>Current Weather in Goa</h2>
+      <p>Goa's weather is warm and humid with coastal breezes. Expect daytime temperatures around 30°C and cooler evenings near 24°C.</p>
+      <p>Humidity levels are moderate, making the beach weather pleasant for sightseeing, water sports, and evening strolls.</p>
+      <div class="forecast">
+        <div class="forecast-item">
+          <h3>Today</h3>
+          <p>Sunny with a light breeze.</p>
+          <p>High: 30°C</p>
+          <p>Low: 24°C</p>
+        </div>
+        <div class="forecast-item">
+          <h3>Tomorrow</h3>
+          <p>Partly cloudy with a chance of shower.</p>
+          <p>High: 31°C</p>
+          <p>Low: 25°C</p>
+        </div>
+        <div class="forecast-item">
+          <h3>Weekend</h3>
+          <p>Warm and humid, great for beach time and local food.</p>
+          <p>High: 32°C</p>
+          <p>Low: 25°C</p>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <p>Stay updated with Goa's weather before planning your coastal trip.</p>
+    </footer>
+  </div>
+</body>
+</html>
