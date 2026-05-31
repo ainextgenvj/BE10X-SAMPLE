@@ -1,0 +1,454 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Hercules ERP — Help</title>
+  <style>
+    :root{--bg:#f4f7fb;--card:#ffffff;--accent:#0b5fff;--muted:#586674;--text:#10202b;--border:#e2e8f0}
+    body{font-family:Inter,Segoe UI,Arial,sans-serif;margin:0;background:var(--bg);color:var(--text)}
+    .wrap{max-width:1100px;margin:32px auto;padding:20px}
+    header{display:flex;align-items:center;gap:16px}
+    .logo{background:var(--accent);color:#fff;padding:12px 16px;border-radius:8px;font-weight:700}
+    h1{margin:0;font-size:1.8rem}
+    p.lead{color:var(--muted);margin:6px 0 20px;max-width:700px}
+    .grid{display:grid;grid-template-columns:280px 1fr;gap:20px}
+    nav.card{background:var(--card);padding:18px;border-radius:14px;box-shadow:0 10px 30px rgba(16,32,43,0.08);border:1px solid var(--border)}
+    nav ul{list-style:none;padding:0;margin:0}
+    nav li{margin:12px 0}
+    nav a{color:var(--accent);text-decoration:none;font-weight:600}
+    main.card{background:var(--card);padding:28px;border-radius:14px;box-shadow:0 10px 30px rgba(16,32,43,0.08);border:1px solid var(--border)}
+    section{margin-bottom:28px}
+    h2{margin:0 0 10px;font-size:1.35rem}
+    .muted{color:var(--muted);margin:0 0 14px;display:block}
+    .sub{color:#2d4a66;font-weight:700;margin:16px 0 8px;display:block}
+    ul{margin:0 0 0 20px;padding:0}
+    li{margin:8px 0;line-height:1.6}
+    .example{background:#f6fbff;border-left:4px solid var(--accent);padding:12px 14px;border-radius:8px;margin-top:12px}
+    .code{font-family:Consolas,monospace;background:#0f1724;color:#e6eef8;padding:6px 8px;border-radius:6px;display:inline-block}
+    footer{margin-top:24px;color:var(--muted);font-size:0.95rem}
+    .actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+    .btn{background:var(--accent);color:#fff;padding:10px 14px;border-radius:8px;text-decoration:none}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">H</div>
+      <div>
+        <h1>Hercules ERP — Help & Quick Guide</h1>
+        <p class="lead">This help page explains the key sales workflows in Hercules ERP using your provided sales module documentation.</p>
+      </div>
+    </header>
+
+    <div class="grid">
+      <nav class="card" aria-label="Help navigation">
+        <ul>
+          <li><a href="#sales-quotation">Sales Quotation</a></li>
+          <li><a href="#sales-order">Sales Order</a></li>
+          <li><a href="#sales-despatch-note">Sales Despatch Note</a></li>
+          <li><a href="#sales-invoice">Sales Invoice</a></li>
+          <li><a href="#return-credit-note">Return Credit Note</a></li>
+          <li><a href="#sales-order-cancellation">Sales Order Cancellation</a></li>
+          <li><a href="#rr-in">R/R In</a></li>
+          <li><a href="#rr-out">R/R Out</a></li>
+          <li><a href="#st-form">ST Form</a></li>
+          <li><a href="#sales-order-service">Sales Order (Service)</a></li>
+          <li><a href="#sales-invoice-service">Sales Invoice (Service)</a></li>
+          <li><a href="#retailer-invoice">Retailer Invoice</a></li>
+        </ul>
+      </nav>
+
+      <main class="card">
+        <section id="sales-quotation">
+          <h2>Sales Quotation</h2>
+          <p class="muted">Create and manage quotation documents that prospective buyers review before order confirmation.</p>
+          <p class="sub">Overview</p>
+          <ul>
+            <li>Quotations / proforma invoices are issued to buyers for pricing approval.</li>
+            <li>Buyer acceptance converts the quotation into a Sales Order.</li>
+            <li>Sales Challan / Delivery Order and Invoice reference the original quotation.</li>
+          </ul>
+          <p class="sub">Navigation</p>
+          <p>Select <strong>Account Receivable &gt; Entry &gt; Sales &gt; Quotation</strong>.</p>
+          <p class="sub">Header details</p>
+          <ul>
+            <li><strong>Document Number:</strong> Enter quotation number. Use F1 to list existing numbers. Auto-filled if document numbering exists.</li>
+            <li><strong>Document Date:</strong> Enter the quotation date.</li>
+            <li><strong>Customer Name:</strong> Enter customer code or name. F1 lists customers and fills details automatically.</li>
+            <li><strong>Party Quotation Number / Date:</strong> Enter buyer reference and its date.</li>
+            <li><strong>Agent:</strong> Select agent using F1.</li>
+            <li><strong>Currency Code:</strong> Choose required currency with F1; leave blank for local currency.</li>
+          </ul>
+          <p class="sub">Product page</p>
+          <ul>
+            <li><strong>Product / Description:</strong> Select product using F1 and load its description.</li>
+            <li><strong>Stock in Hand:</strong> Displays current stock availability.</li>
+            <li><strong>Warehouse:</strong> Select godown or leave blank.</li>
+            <li><strong>Quantity:</strong> Enter quantity. System prompts for selling unit and converted quantity when needed.</li>
+            <li><strong>Rate:</strong> Picked from rate master based on customer policy; editable with rights.</li>
+            <li><strong>Amount:</strong> Automatically calculated as Quantity × Rate. Press Enter to open term details and auto-calculate discounts.</li>
+            <li><strong>Additional Description:</strong> Add extra product information.</li>
+          </ul>
+          <p class="sub">Reference & address</p>
+          <ul>
+            <li>Select taxes and percentages on the Terms page if required.</li>
+            <li>Enter Net Amount, Payment Type, Terms, Validity, and Remarks.</li>
+            <li>Address page auto-displays customer shipping/billing details, which may be edited.</li>
+          </ul>
+          <p class="muted"><strong>Save:</strong> Click OK. <strong>Exit:</strong> Click Cancel.</p>
+        </section>
+
+        <section id="sales-order">
+          <h2>Sales Order</h2>
+          <p class="muted">Record confirmed customer orders and reserve stock before delivery.</p>
+          <p class="sub">Navigation</p>
+          <p>Select <strong>Account Receivable &gt; Entry &gt; Sales &gt; Sales Order</strong>.</p>
+          <p class="sub">Header details</p>
+          <ul>
+            <li><strong>Document Number:</strong> Enter order acceptance number; use F1 lookup or auto-fill.</li>
+            <li><strong>Document Date:</strong> Enter order date.</li>
+            <li><strong>Customer Name:</strong> Enter customer using F1.</li>
+            <li><strong>Party Order Number / Date:</strong> Optional buyer reference.</li>
+            <li><strong>Agent:</strong> Select via F1.</li>
+            <li><strong>Currency Code / Description:</strong> Choose currency and load its description.</li>
+          </ul>
+          <p class="sub">Product page</p>
+          <ul>
+            <li><strong>Product:</strong> Select using F1.</li>
+            <li><strong>Warehouse:</strong> Choose the dispatch godown or leave blank.</li>
+            <li><strong>Quantity:</strong> Enter quantity; system prompts for alternate selling units if needed.</li>
+            <li><strong>Rate:</strong> Pulled from rate master; editable with permission.</li>
+            <li><strong>Amount:</strong> Calculated automatically, with term-based discount details available.</li>
+            <li><strong>Additional Description:</strong> Enter any extra product information.</li>
+          </ul>
+          <p class="sub">Reference</p>
+          <ul>
+            <li>Enter Net Amount and Remarks. Remarks carry forward to the delivery order.</li>
+            <li>Enter terms, conditions, and address details as required.</li>
+          </ul>
+          <p class="muted"><strong>Save:</strong> OK. <strong>Cancel:</strong> exit without saving.</p>
+        </section>
+
+        <section id="sales-despatch-note">
+          <h2>Sales Despatch Note</h2>
+          <p class="muted">Create delivery challans once the order is confirmed and goods are dispatched.</p>
+          <p class="sub">Navigation</p>
+          <p>Select <strong>Account Receivable &gt; Entry &gt; Sales &gt; Sales Despatch Note</strong>.</p>
+          <p class="sub">Header details</p>
+          <ul>
+            <li><strong>Document Number:</strong> Challan number with F1 lookup and auto-fill.</li>
+            <li><strong>Document Date:</strong> Challan date.</li>
+            <li><strong>Customer:</strong> Select the customer for the dispatch note.</li>
+            <li><strong>Quotation Details:</strong> Open quotation reference window.</li>
+            <li><strong>Order Details:</strong> Open order reference window.</li>
+            <li><strong>Manual DC Number / Date:</strong> Enter optional delivery note references.</li>
+            <li><strong>Agent:</strong> Select via F1.</li>
+            <li><strong>Currency Code:</strong> Select currency and load description.</li>
+          </ul>
+          <p class="sub">Product page</p>
+          <ul>
+            <li>Product, warehouse, quantity, rate, and amount details appear automatically.</li>
+            <li>Amount is calculated from Quantity × Rate.</li>
+            <li>Add additional description for the dispatch line as needed.</li>
+          </ul>
+          <p class="sub">Reference page</p>
+          <ul>
+            <li>Net amount and party order fields display automatically based on selection.</li>
+          </ul>
+          <p class="muted"><strong>Save:</strong> OK. <strong>Cancel:</strong> exit without saving.</p>
+        </section>
+
+        <section id="sales-invoice">
+          <h2>Sales Invoice</h2>
+          <p class="muted">Raise the invoice after the goods have been delivered and dispatch note is complete.</p>
+          <p class="sub">Navigation</p>
+          <p>Select <strong>Account Receivable &gt; Entry &gt; Sales &gt; Sales Invoice</strong>.</p>
+          <p class="sub">Header details</p>
+          <ul>
+            <li><strong>Document Number:</strong> Invoice number. Use F1 for lookup or auto-fill.</li>
+            <li><strong>Document Date:</strong> Invoice date.</li>
+            <li><strong>Customer Name:</strong> Select customer using F1.</li>
+            <li><strong>Outstanding Dispatch Note:</strong> Select dispatch notes to invoice.</li>
+            <li><strong>Manual Bill Number / Date:</strong> Enter optional bill references.</li>
+            <li><strong>Agent:</strong> Select via F1.</li>
+          </ul>
+          <p class="sub">Product page</p>
+          <ul>
+            <li>Product, description, warehouse, quantity, rate and amount load from the selected dispatch note.</li>
+            <li>Rates can be changed if user rights allow it.</li>
+            <li>Use Add Description to insert an extended item note.</li>
+          </ul>
+          <p class="sub">Reference page</p>
+          <ul>
+            <li>Net amount is displayed automatically.</li>
+            <li>Enter reference challan number/date, party order number/date, transporter number, truck number, remarks, final destination, port/place of loading, country of origin, mode of transport, payment terms, validity of opening L/C, confirmation required, agent commission, insurance selection, specification, and customer bank details.</li>
+            <li>Billing and shipping addresses include district, state, country, pin code, and email data.</li>
+          </ul>
+          <p class="muted"><strong>Save:</strong> OK. <strong>Cancel:</strong> exit without saving.</p>
+        </section>
+
+        <section id="return-credit-note">
+          <h2>Return Credit Note</h2>
+          <p class="muted">Issue a credit note after the customer returns goods and the return is recorded.</p>
+          <p class="sub">Overview</p>
+          <ul>
+            <li>Customer account is credited once the Sales Return Credit Note is entered.</li>
+          </ul>
+          <p class="sub">Navigation</p>
+          <p>Select <strong>Account Receivable &gt; Entry &gt; Sales &gt; Return Credit Note</strong>.</p>
+          <p class="sub">Header details</p>
+          <ul>
+            <li><strong>Document Number:</strong> Credit Note number with F1 lookup.</li>
+            <li><strong>Date:</strong> Credit Note date.</li>
+            <li><strong>Customer:</strong> Automatically displayed when Sales Return reference is selected.</li>
+            <li><strong>Agent:</strong> Displayed based on reference number.</li>
+            <li><strong>Reference Bill:</strong> Enter the original sales bill for this return.</li>
+          </ul>
+          <p class="sub">Product page</p>
+          <ul>
+            <li>Details from the selected return challan are displayed automatically, including product lines, quantity, rate, amounts and policy details.</li>
+            <li>You may enter a lower returned quantity if needed.</li>
+          </ul>
+          <p class="sub">Term & reference pages</p>
+          <ul>
+            <li>Term details are picked from the Sales Return module if billing terms are defined.</li>
+            <li>Reference page displays relevant reference details.</li>
+          </ul>
+          <p class="sub">Address page</p>
+          <ul>
+            <li>Billing and shipping addresses are populated from master data and may be modified.</li>
+          </ul>
+          <p class="muted"><strong>Save:</strong> OK. <strong>Cancel:</strong> exit without saving.</p>
+        </section>
+
+        <section id="sales-order-cancellation">
+          <h2>Sales Order Cancellation</h2>
+          <p class="muted">Cancel customer orders while keeping the cancellation history in the system.</p>
+          <p class="sub">Navigation</p>
+          <p>Select <strong>Account Receivable &gt; Entry &gt; Sales &gt; Sales Order Cancellation</strong>.</p>
+          <p class="sub">Header details</p>
+          <ul>
+            <li><strong>Document Number:</strong> Enter the order acceptance number with F1 lookup.</li>
+            <li><strong>Document Date:</strong> Enter the order acceptance date.</li>
+            <li><strong>Customer Name:</strong> Select the customer using F1.</li>
+            <li><strong>Party Order Number / Date:</strong> Optional order reference details.</li>
+            <li><strong>Agent:</strong> Select via F1.</li>
+            <li><strong>Currency Code / Description:</strong> Choose currency and load its description.</li>
+          </ul>
+          <p class="sub">Product page</p>
+          <ul>
+            <li><strong>Product:</strong> Select using F1.</li>
+            <li><strong>Warehouse:</strong> Choose dispatch godown or leave blank.</li>
+            <li><strong>Quantity:</strong> Enter quantity. The system prompts for converted quantity if required.</li>
+            <li><strong>Rate:</strong> Pulled from rate master and editable if authorized.</li>
+            <li><strong>Amount:</strong> Calculated automatically and may include discount terms.</li>
+            <li><strong>Terms Amount:</strong> Calculated automatically.</li>
+            <li><strong>Additional Description:</strong> Add extra product details.</li>
+          </ul>
+          <p class="sub">Reference</p>
+          <ul>
+            <li>Enter net amount, delivery method, remarks, terms, conditions, and address details as needed.</li>
+          </ul>
+          <p class="muted"><strong>Save:</strong> OK. <strong>Cancel:</strong> exit without saving.</p>
+        </section>
+
+        <section id="rr-in">
+          <h2>R/R In</h2>
+          <p class="muted">Record returned goods and replacements coming back into stock.</p>
+          <p class="sub">Concept</p>
+          <ul>
+            <li>Used when goods are returned on challan or invoice and need to be tracked.</li>
+            <li>Inventory-only returns are also supported without financial accounting.</li>
+            <li>Financial accounting is affected if charges are applied.</li>
+          </ul>
+          <p class="sub">Navigation</p>
+          <p>Select <strong>Accounts Receivable &gt; Entry &gt; Sales &gt; R/R In/Out</strong>.</p>
+          <p class="sub">Header details</p>
+          <ul>
+            <li><strong>Category:</strong> Choose <em>In</em> for inward goods or <em>Out</em> for outward goods.</li>
+            <li><strong>Document No:</strong> Enter document number and use right-click for lookup.</li>
+            <li><strong>Date:</strong> Enter document date.</li>
+            <li><strong>Challan No / Date:</strong> Enter related challan number and date.</li>
+            <li><strong>Bill No / Date:</strong> Enter related bill number or dummy number when required.</li>
+            <li><strong>Customer:</strong> Enter customer or leave blank for cash sale. Blank entries prompt for further payment details.</li>
+            <li><strong>Salesman:</strong> Default salesman displays from master data.</li>
+            <li><strong>Class:</strong> Enter document class for branch/depot/type of order.</li>
+          </ul>
+          <p class="sub">Product page</p>
+          <ul>
+            <li><strong>Product on Bill/Challan:</strong> Enter invoiced product. If using an invoice, only invoiced products are accepted.</li>
+            <li><strong>Product In/Out:</strong> Enter returned product code for seconds or damaged goods.</li>
+            <li><strong>Warehouse:</strong> Select receiving warehouse or leave blank.</li>
+            <li><strong>Quantity:</strong> Enter returned quantity.</li>
+          </ul>
+          <p class="sub">Reference page</p>
+          <ul>
+            <li><strong>Debit Note Number:</strong> Enter debit note number.</li>
+            <li><strong>Remarks:</strong> Enter remarks carried forward from order or challan.</li>
+          </ul>
+          <p class="sub">Address page</p>
+          <ul>
+            <li>Billing and shipping addresses are auto-populated from master data and can be updated.</li>
+          </ul>
+          <p class="muted"><strong>Save:</strong> OK. <strong>Cancel:</strong> exit without saving.</p>
+        </section>
+
+        <section id="rr-out">
+          <h2>R/R Out</h2>
+          <p class="muted">Record replacements or rejected goods sent back to customers.</p>
+          <p class="sub">Overview</p>
+          <ul>
+            <li>Use when sending replacement goods or rejected items outward.</li>
+            <li>Supports inventory-only and accounting-affected outbound replacements.</li>
+          </ul>
+          <p class="sub">Navigation</p>
+          <p>Select <strong>Accounts Receivable &gt; Entry &gt; Sales &gt; R/R In/Out</strong> and choose <em>Out</em>.</p>
+          <p class="sub">Header details</p>
+          <ul>
+            <li><strong>Category:</strong> Out for outward delivery.</li>
+            <li><strong>Document No:</strong> Enter document number and use right-click lookup.</li>
+            <li><strong>Date:</strong> Enter document date.</li>
+            <li><strong>Challan No / Date:</strong> Enter related challan and its date.</li>
+            <li><strong>Bill No / Date:</strong> Enter related bill or dummy number.</li>
+            <li><strong>Customer:</strong> Select customer or leave blank for cash sales.</li>
+            <li><strong>Salesman:</strong> Default salesman displays and may be changed.</li>
+            <li><strong>Class:</strong> Enter document class for order categorization.</li>
+          </ul>
+          <p class="sub">Product page</p>
+          <ul>
+            <li><strong>Product on Bill/Challan:</strong> Only invoiced products are accepted when an existing invoice is selected.</li>
+            <li><strong>Product In/Out:</strong> Enter returned product code for damaged or alternate items.</li>
+            <li><strong>Warehouse:</strong> Select warehouse or leave blank.</li>
+            <li><strong>Quantity:</strong> Enter quantity being returned or replaced.</li>
+          </ul>
+          <p class="sub">Reference page</p>
+          <ul>
+            <li><strong>Debit Note Number:</strong> Enter debit note number.</li>
+            <li><strong>Remarks:</strong> Auto carried forward from order or challan where applicable.</li>
+          </ul>
+          <p class="sub">Address page</p>
+          <ul>
+            <li>Modify billing and shipping addresses if required.</li>
+          </ul>
+          <p class="muted"><strong>Save:</strong> OK. <strong>Cancel:</strong> exit without saving.</p>
+        </section>
+
+        <section id="st-form">
+          <h2>ST Form</h2>
+          <p class="muted">Generate sales tax forms for statutory compliance using customer and billing references.</p>
+          <p class="sub">Navigation</p>
+          <p>Select <strong>Accounts Receivable &gt; Sales &gt; ST Form</strong>.</p>
+          <ul>
+            <li><strong>ST Form Number:</strong> Enter form number or use F1 lookup.</li>
+            <li><strong>Date:</strong> Enter form date.</li>
+            <li><strong>Customer:</strong> Select using F1.</li>
+            <li><strong>Bill Number / Date:</strong> Choose the associated bill.</li>
+            <li><strong>Sales Tax Code:</strong> Enter tax code.</li>
+            <li><strong>Bill Amount:</strong> Enter bill amount.</li>
+            <li><strong>Permit Number / Date:</strong> Enter permit details.</li>
+            <li><strong>Taxable Amount:</strong> Displays automatically.</li>
+          </ul>
+          <p class="muted"><strong>Save:</strong> OK. <strong>Cancel:</strong> exit without saving.</p>
+        </section>
+
+        <section id="sales-order-service">
+          <h2>Sales Order (Service)</h2>
+          <p class="muted">Capture service orders separately from stock-based sales orders.</p>
+          <p class="sub">Navigation</p>
+          <p>Select <strong>Account Receivable &gt; Entry &gt; Sales &gt; Sales Order (Service)</strong>.</p>
+          <p class="sub">Header details</p>
+          <ul>
+            <li><strong>Document Number:</strong> Enter service order acceptance number with F1 lookup.</li>
+            <li><strong>Document Date:</strong> Enter service order date.</li>
+            <li><strong>Customer Name:</strong> Select customer using F1.</li>
+            <li><strong>Party Order Number / Date:</strong> Optional customer reference.</li>
+            <li><strong>Agent:</strong> Select with F1.</li>
+            <li><strong>Currency Code / Description:</strong> Enter currency and load description.</li>
+          </ul>
+          <p class="sub">Product page</p>
+          <ul>
+            <li><strong>Product:</strong> Select service item using F1.</li>
+            <li><strong>Warehouse:</strong> Select godown or leave blank if not applicable.</li>
+            <li><strong>Quantity:</strong> Enter service quantity. System may prompt for converted units.</li>
+            <li><strong>Rate:</strong> Picked from rate master, editable when allowed.</li>
+            <li><strong>Amount:</strong> Automatically calculated.</li>
+            <li><strong>Additional Description:</strong> Enter service details.</li>
+          </ul>
+          <p class="sub">Reference page</p>
+          <ul>
+            <li>Enter net amount, remarks, terms, conditions, and address details.</li>
+          </ul>
+          <p class="muted"><strong>Save:</strong> OK. <strong>Cancel:</strong> exit without saving.</p>
+        </section>
+
+        <section id="sales-invoice-service">
+          <h2>Sales Invoice (Service)</h2>
+          <p class="muted">Apply invoicing for services rendered after completion or delivery.</p>
+          <p class="sub">Navigation</p>
+          <p>Select <strong>Account Receivable &gt; Entry &gt; Sales &gt; Sales Invoice (Service)</strong>.</p>
+          <p class="sub">Header details</p>
+          <ul>
+            <li><strong>Document Number:</strong> Enter invoice number with F1 lookup.</li>
+            <li><strong>Document Date:</strong> Enter invoice date.</li>
+            <li><strong>Customer Name:</strong> Select using F1.</li>
+            <li><strong>Credit Days / Due Date:</strong> Computed from customer master values.</li>
+            <li><strong>Manual Bill Number / Date:</strong> Enter if required.</li>
+            <li><strong>Agent:</strong> Select via F1.</li>
+          </ul>
+          <p class="sub">Product page</p>
+          <ul>
+            <li>Service product details, quantity, rate and amount load from the selected dispatch note.</li>
+            <li>Rate may be edited if rights permit.</li>
+            <li>Use Add Description to insert extended item notes.</li>
+          </ul>
+          <p class="sub">Reference page</p>
+          <ul>
+            <li>Net invoice value appears automatically.</li>
+            <li>Enter reference challan number/date, party order number/date, transporter number, truck number, remarks, and address fields.</li>
+          </ul>
+          <p class="muted"><strong>Save:</strong> OK. <strong>Cancel:</strong> exit without saving.</p>
+        </section>
+
+        <section id="retailer-invoice">
+          <h2>Retailer Invoice</h2>
+          <p class="muted">Record retailer invoices for stockable products sold through cash or bank transit.</p>
+          <p class="sub">Navigation</p>
+          <p>Select <strong>Entry &gt; Sales &gt; Retailer Invoice</strong>.</p>
+          <p class="sub">Header details</p>
+          <ul>
+            <li><strong>Bill No:</strong> Enter sale bill number with right-click lookup.</li>
+            <li><strong>Bill Date:</strong> Enter date.</li>
+            <li><strong>Cash / Bank Code:</strong> Select using F1.</li>
+            <li><strong>Customer Code:</strong> Enter or select customer. Leave blank for cash sale.</li>
+            <li><strong>Cash / Bank:</strong> Enter the account for cash or bank credit.</li>
+            <li><strong>Cheque No / Dated / On:</strong> Enter if using bank payment.</li>
+            <li><strong>Party Name:</strong> Optional party name.</li>
+            <li><strong>Due Date:</strong> Default calculated from credit days and modifiable.</li>
+            <li><strong>Salesman:</strong> Defaults from master and can be changed.</li>
+            <li><strong>Remarks:</strong> Enter relevant order remarks.</li>
+            <li><strong>Batch No:</strong> Select from existing batch list.</li>
+          </ul>
+          <p class="sub">Product page</p>
+          <ul>
+            <li>Select product with lookup and enter quantity.</li>
+            <li>System prompts for selling unit conversion if needed.</li>
+            <li>Rate defaults from product master and can be updated.</li>
+            <li>Product amount is calculated automatically.</li>
+          </ul>
+          <p class="sub">Terms and tax</p>
+          <ul>
+            <li>Terms appear in code order and allow percentage entry with automatic amount calculation.</li>
+            <li>The tax popup shows GST/VAT/ST codes unless VAT was already answered as Y.</li>
+          </ul>
+          <p class="muted"><strong>Save:</strong> OK. <strong>Cancel:</strong> exit without saving.</p>
+        </section>
+
+        <footer>
+          <p>Tip: Use Ctrl+F to search this help page. I can also add screenshots, workflow diagrams, or a printable version if you want.</p>
+        </footer>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
