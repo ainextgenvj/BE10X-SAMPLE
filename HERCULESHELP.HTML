@@ -29,6 +29,15 @@
     footer{margin-top:24px;color:var(--muted);font-size:0.95rem}
     .actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
     .btn{background:var(--accent);color:#fff;padding:10px 14px;border-radius:8px;text-decoration:none}
+    .search-card{background:var(--card);padding:18px;border-radius:14px;box-shadow:0 10px 30px rgba(16,32,43,0.08);border:1px solid var(--border);margin-bottom:20px}
+    .search-box{display:flex;gap:10px;flex-wrap:wrap}
+    .search-box input{flex:1 1 240px;padding:12px 14px;border:1px solid #cbd5e1;border-radius:10px;font-size:1rem}
+    .search-box button{background:var(--accent);color:#fff;border:none;padding:12px 18px;border-radius:10px;cursor:pointer;font-weight:600}
+    .search-answer{background:#f8fbff;border:1px solid #dbeafe;border-radius:10px;padding:16px;margin-top:16px}
+    .search-answer h3{margin:0 0 10px;font-size:1.05rem}
+    .search-answer p{margin:0.5rem 0;line-height:1.6}
+    .search-answer ul{margin:10px 0 0 18px;padding:0}
+    .search-answer li{margin:6px 0}
   </style>
 </head>
 <body>
@@ -40,6 +49,16 @@
         <p class="lead">This help page explains the key sales workflows in Hercules ERP using your provided sales module documentation.</p>
       </div>
     </header>
+
+    <div class="search-card">
+      <div class="search-box">
+        <input id="helpQuery" type="text" placeholder="Ask a question or type keywords..." aria-label="Help search query">
+        <button id="searchButton" type="button">Search</button>
+      </div>
+      <div id="searchAnswer" class="search-answer">
+        <p class="muted">Type a question or enter keywords, then click Search to get a direct answer from this page.</p>
+      </div>
+    </div>
 
     <div class="grid">
       <nav class="card" aria-label="Help navigation">
@@ -450,5 +469,100 @@
       </main>
     </div>
   </div>
+  <script>
+    const searchButton = document.getElementById('searchButton');
+    const helpQuery = document.getElementById('helpQuery');
+    const searchAnswer = document.getElementById('searchAnswer');
+
+    function normalize(text) {
+      return text.toLowerCase().replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
+    }
+
+    function escapeRegExp(value) {
+      return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    function highlight(text, terms) {
+      let result = text;
+      terms.forEach(term => {
+        const pattern = new RegExp(`(${escapeRegExp(term)})`, 'gi');
+        result = result.replace(pattern, '<mark>$1</mark>');
+      });
+      return result;
+    }
+
+    const sections = Array.from(document.querySelectorAll('main.card section')).map(section => {
+      const text = section.innerText.replace(/\s+/g, ' ').trim();
+      const normalized = normalize(text);
+      const sentences = normalized.split(/(?<=[.!?])\s+/).map(sentence => sentence.trim()).filter(Boolean);
+      return {
+        id: section.id,
+        title: section.querySelector('h2')?.innerText || '',
+        text,
+        normalized,
+        sentences
+      };
+    });
+
+    function scoreSentence(sentence, terms) {
+      return terms.reduce((score, term) => score + (sentence.includes(term) ? 1 : 0), 0);
+    }
+
+    function searchHelp() {
+      const query = helpQuery.value.trim();
+      if (!query) {
+        searchAnswer.innerHTML = '<p class="muted">Enter a question or keywords to search the help content.</p>';
+        return;
+      }
+
+      const terms = normalize(query).split(' ').filter(Boolean);
+      const scoredSections = sections.map(section => {
+        const sectionScore = terms.reduce((score, term) => score + (section.normalized.includes(term) ? 1 : 0), 0);
+        const scoredSentences = section.sentences.map(sentence => ({
+          sentence,
+          score: scoreSentence(sentence, terms)
+        })).filter(item => item.score > 0);
+        return {
+          section,
+          sectionScore,
+          scoredSentences
+        };
+      }).filter(item => item.sectionScore > 0 || item.scoredSentences.length > 0);
+
+      if (!scoredSections.length) {
+        searchAnswer.innerHTML = '<p class="muted">No direct answer found. Try broader terms like "invoice", "delivery", or "quotation".</p>';
+        return;
+      }
+
+      scoredSections.sort((a, b) => {
+        const scoreA = a.scoredSentences.reduce((sum, s) => sum + s.score, 0) + a.sectionScore;
+        const scoreB = b.scoredSentences.reduce((sum, s) => sum + s.score, 0) + b.sectionScore;
+        return scoreB - scoreA;
+      });
+
+      const bestSection = scoredSections[0].section;
+      const matchedSentences = scoredSections[0].scoredSentences.sort((a, b) => b.score - a.score).slice(0, 3);
+      const related = scoredSections.slice(1, 4);
+
+      const answerHtml = [`<h3>${bestSection.title}</h3>`];
+      if (matchedSentences.length) {
+        matchedSentences.forEach(item => {
+          answerHtml.push(`<p>${highlight(item.sentence, terms)}</p>`);
+        });
+      } else {
+        answerHtml.push(`<p>${highlight(bestSection.text.slice(0, 240), terms)}...</p>`);
+      }
+      answerHtml.push(`<p><strong>Section:</strong> <a href="#${bestSection.id}">${bestSection.title}</a></p>`);
+      if (related.length) {
+        answerHtml.push('<div class="sub">Related topics:</div><ul>' + related.map(item => `<li>${item.section.title}</li>`).join('') + '</ul>');
+      }
+      searchAnswer.innerHTML = answerHtml.join('');
+    }
+
+    searchButton.addEventListener('click', searchHelp);
+    helpQuery.addEventListener('keydown', event => {
+      if (event.key === 'Enter') searchHelp();
+    });
+  </script>
 </body>
 </html>
