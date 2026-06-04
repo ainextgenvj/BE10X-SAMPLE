@@ -463,6 +463,153 @@
           <p class="muted"><strong>Save:</strong> OK. <strong>Cancel:</strong> exit without saving.</p>
         </section>
 
+        <section id="assets-module">
+          <h2>Assets Module</h2>
+          <p class="muted">Create and manage fixed assets, their purchase details, depreciation, transfers, disposal and reporting.</p>
+
+          <p class="sub">Define Assets</p>
+          <p>The Assets Master allows you to register asset types (for example, Dell 620 laptops) while individual serials are recorded via the Asset Purchase module.</p>
+          <p class="sub">Navigation</p>
+          <p>Select <strong>Assets &gt; Master &gt; Define Assets</strong>. Enter values on the pages described below.</p>
+          <ul>
+            <li><strong>Code:</strong> Enter an alphanumeric asset code (max 20 characters).</li>
+            <li><strong>Category:</strong> Asset category (mandatory).</li>
+            <li><strong>UOM:</strong> Unit of Measurement for the asset.</li>
+            <li><strong>Lead Time:</strong> Procurement lead time (days).</li>
+            <li><strong>Estimated Life:</strong> Estimated life in months (editable when purchasing).</li>
+            <li><strong>Residue Value:</strong> Residual value for depreciation calculations.</li>
+            <li><strong>Group / Subgroup:</strong> Select group and subgroup (F1 for lookup).</li>
+            <li><strong>Depreciation:</strong> Depreciation percentage.</li>
+            <li><strong>Asset Description:</strong> Asset name (cannot be blank).</li>
+            <li><strong>Additional:</strong> Any extra information about the asset.</li>
+          </ul>
+          <p class="muted">Click <strong>OK</strong> to save or <strong>Cancel</strong> to exit without saving.</p>
+
+          <p class="sub">Define Assets Grouping</p>
+          <p class="muted">Group assets into logical Groups and Subgroups to help reporting and mapping.</p>
+          <ul>
+            <li><strong>Add Group:</strong> Create a new group and specify description, depreciation rate and UOM.</li>
+            <li><strong>Assets Mapping:</strong> Map assets to selected Group/Subgroup; mapped assets show a check mark.</li>
+            <li><strong>Details / Ok / Cancel:</strong> View mapping details, save mappings or cancel without saving.</li>
+          </ul>
+
+          <p class="sub">Opening Balance</p>
+          <p class="muted">Enter opening balances for individual assets carried forward from prior periods.</p>
+          <ul>
+            <li><strong>Serial Number:</strong> Individual asset serial.</li>
+            <li><strong>Date / Put to Use Date:</strong> Balance date and date asset was put to use.</li>
+            <li><strong>Quantity / Original Value:</strong> Enter quantity and original cost.</li>
+            <li><strong>Depreciation Rate / Accumulated:</strong> Enter rate and accumulated depreciation.</li>
+            <li><strong>Estimated Life / Residue Value:</strong> Editable per asset; used to compute depreciation/month.</li>
+            <li><strong>Number of Depreciated Month:</strong> Months of depreciation already charged.</li>
+          </ul>
+
+          <p class="sub">Define Department Master</p>
+          <p class="muted">Create departments to associate assets with organisational units.</p>
+          <ul>
+            <li><strong>Code:</strong> Department code (max 5 characters).</li>
+            <li><strong>Description:</strong> Mandatory description (max 50 characters).</li>
+            <li><strong>Ok / Cancel:</strong> Save or exit without saving.</li>
+          </ul>
+
+          <p class="sub">Department Asset Mapping</p>
+          <p class="muted">Map departments to assets so the system shows only relevant departments during asset entry.</p>
+          <ul>
+            <li><strong>View On:</strong> Choose to map by Department or by Asset.</li>
+            <li><strong>Mapping:</strong> Select Department (left) or Asset (left), then choose corresponding Assets/Departments on the right and save.</li>
+            <li><strong>Save / Cancel:</strong> Persist or discard mappings.</li>
+          </ul>
+
+          <p class="sub">Asset Put to Use</p>
+          <p class="muted">Use this to put assets into service, record revaluation, or create and post a new asset from purchases.</p>
+          <p class="sub">Navigation</p>
+          <p>Select <strong>Assets &gt; Entry &gt; Assets Put to Use</strong>.</p>
+          <ul>
+            <li><strong>Voucher No / Date:</strong> Document number and date (F1 lookup / auto-fill available).</li>
+            <li><strong>Put To Use Date:</strong> Date from which depreciation is calculated.</li>
+            <li><strong>Asset Revaluation:</strong> Check to indicate a revaluation entry.</li>
+            <li><strong>Narration:</strong> Free text remarks.</li>
+          </ul>
+          <p class="sub">Transfer From / Asset / System Journal</p>
+          <ul>
+            <li><strong>General Ledger Code:</strong> Select GL to transfer balances from (F1 lookup).</li>
+            <li><strong>Department / Subledger:</strong> Enter codes as applicable.</li>
+            <li><strong>Amount:</strong> Enter debit/credit amounts; multiple GL lines may be added for a single asset transfer.</li>
+            <li><strong>Product Code / Batch/Serial No:</strong> Select the asset and provide serial/batch number when applicable.</li>
+            <li><strong>Residue / Estimated Life / Depreciation per Month:</strong> Values used to calculate monthly depreciation.</li>
+            <li><strong>Ok / Cancel:</strong> Save or exit without saving.</li>
+          </ul>
+
+          <p class="sub">Asset Transfer</p>
+          <p class="muted">Transfer assets between locations or departments.</p>
+          <p class="sub">Navigation</p>
+          <p>Select <strong>Assets &gt; Entry &gt; Assets Transfer</strong>.</p>
+          <ul>
+            <li><strong>Voucher Number / Date / Narration:</strong> Transfer document details (F1 lookup supported).</li>
+            <li><strong>Asset Code / Description:</strong> Select asset to transfer (F1 lookup).</li>
+            <li><strong>Quantity / Serial Number:</strong> Enter quantity and serials being transferred.</li>
+            <li><strong>From Department / To Department:</strong> Select source and destination departments.</li>
+            <li><strong>System Transaction:</strong> GL, department, subledger and amount fields mirror the financial posting generated by the transfer.</li>
+            <li><strong>Ok / Cancel:</strong> Save or discard.</li>
+          </ul>
+
+          <p class="sub">Asset Disposal</p>
+          <p class="muted">Dispose assets following organisational disposal policy (sale, auction, tender etc.).</p>
+          <p class="sub">Navigation</p>
+          <p>Select <strong>Assets &gt; Entry &gt; Assets Disposal</strong>.</p>
+          <ul>
+            <li><strong>Voucher No / Date / Narration:</strong> Disposal document details.</li>
+            <li><strong>Asset Code / Serial:</strong> Choose asset and provide serial/batch.</li>
+            <li><strong>Department / Amount / Residue / Estimated Life:</strong> Values used to compute final posting and depreciation per day.</li>
+            <li><strong>Transfer To (GL):</strong> GL code that receives proceeds/adjustment; branch and department selection available.</li>
+            <li><strong>System Journal:</strong> Auto-filled journal lines; click OK to post.</li>
+          </ul>
+
+          <p class="sub">Asset Impairment</p>
+          <p class="muted">Record impairment of assets; impaired assets are parked to a provision GL and stop accruing depreciation.</p>
+          <ul>
+            <li><strong>Document Number / Date:</strong> Impairment document details (F1 lookup supported).</li>
+            <li><strong>Asset Code / Serial:</strong> Select the asset to impair.</li>
+            <li><strong>Location / Department / Remarks:</strong> Displayed and editable as required.</li>
+            <li><strong>Ok / Cancel:</strong> Save or exit without saving.</li>
+          </ul>
+
+          <p class="sub">Reverse Impairment</p>
+          <p class="muted">Reverse a previously impaired asset so it resumes depreciation and is moved back to the asset control account.</p>
+          <ul>
+            <li><strong>Document Number / Date:</strong> Reverse impairment document.</li>
+            <li><strong>Asset Code / Serial:</strong> Select impaired asset serial to reverse.</li>
+            <li><strong>Location / Department / Remarks:</strong> Displayed automatically.</li>
+            <li><strong>Ok / Cancel:</strong> Save or discard.</li>
+          </ul>
+
+          <p class="sub">Change Depreciation Rate</p>
+          <p class="muted">When estimated life changes, recalculate old depreciation and post adjustment journals.</p>
+          <ul>
+            <li><strong>Document Number / Date / Narration:</strong> Create a change-rate document (F1 lookup available).</li>
+            <li><strong>Asset / Serial:</strong> Select asset and serial; old estimated life and rate are populated automatically.</li>
+            <li><strong>New Estimated Life / New Depreciation Rate:</strong> Enter new life and the system computes new rate and depreciation per day.</li>
+            <li><strong>System Journal / Ok / Cancel:</strong> Review system journal and save or cancel.</li>
+          </ul>
+
+          <p class="sub">Depreciation Calculation</p>
+          <p class="muted">Calculate and post depreciation for all or selected assets for a month-end date.</p>
+          <ul>
+            <li><strong>Depreciation As On:</strong> Month-end date to calculate up to.</li>
+            <li><strong>Transaction Date:</strong> Date to post the depreciation journal.</li>
+            <li><strong>Generate:</strong> Click to compute depreciation; select assets and click OK to post journal entries.</li>
+            <li><strong>Cancel:</strong> Exit without posting.</li>
+          </ul>
+
+          <p class="sub">Reports</p>
+          <ul>
+            <li><strong>Asset Listing:</strong> Select <strong>Assets &gt; Reports &gt; Asset Listing</strong> and click Preview.</li>
+            <li><strong>Fixed Asset Register:</strong> Select <strong>Assets &gt; Reports &gt; Fixed Asset Register</strong> and click Preview.</li>
+          </ul>
+
+          <p class="muted">This section has been added to the help. Click <strong>OK</strong> on dialogs where applicable to save changes or <strong>Cancel</strong> to abort.</p>
+        </section>
+
         <footer>
           <p>Tip: Use Ctrl+F to search this help page. I can also add screenshots, workflow diagrams, or a printable version if you want.</p>
         </footer>

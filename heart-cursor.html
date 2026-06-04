@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dynamic Heart Cursor</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      cursor: none;
+      font-family: Inter, system-ui, sans-serif;
+      background: linear-gradient(135deg, #ff416c 0%, #f8b500 25%, #1dbde6 50%, #4c6ef5 75%, #2ab7ca 100%);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .scene {
+      width: min(1180px, 100vw);
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .panel {
+      min-height: 220px;
+      border-radius: 28px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
+    }
+
+    .panel::before {
+      content: attr(data-label);
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.88);
+      pointer-events: none;
+    }
+
+    .panel:nth-child(1) { background: #ff416c; }
+    .panel:nth-child(2) { background: #f77a52; }
+    .panel:nth-child(3) { background: #ffd93d; }
+    .panel:nth-child(4) { background: #1dbde6; }
+    .panel:nth-child(5) { background: #4c6ef5; }
+    .panel:nth-child(6) { background: #2ab7ca; }
+
+    .panel-content {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: rgba(255, 255, 255, 0.96);
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+      pointer-events: none;
+    }
+
+    .heart-cursor {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 19px;
+      height: 19px;
+      pointer-events: none;
+      transform: translate(-50%, -50%) rotate(45deg);
+      z-index: 9999;
+      display: grid;
+      place-items: center;
+      background-color: #ff2d55;
+      box-shadow: 0 0 18px rgba(255, 45, 85, 0.35);
+    }
+
+    .heart-cursor::before,
+    .heart-cursor::after {
+      content: "";
+      position: absolute;
+      width: 19px;
+      height: 19px;
+      border-radius: 50%;
+      background: inherit;
+    }
+
+    .heart-cursor::before {
+      top: -9.5px;
+      left: 0;
+    }
+
+    .heart-cursor::after {
+      left: -9.5px;
+      top: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <div class="panel" data-label="Warm Red">
+      <div class="panel-content">Red</div>
+    </div>
+    <div class="panel" data-label="Coral Orange">
+      <div class="panel-content">Orange</div>
+    </div>
+    <div class="panel" data-label="Golden Yellow">
+      <div class="panel-content">Yellow</div>
+    </div>
+    <div class="panel" data-label="Ocean Blue">
+      <div class="panel-content">Blue</div>
+    </div>
+    <div class="panel" data-label="Indigo Violet">
+      <div class="panel-content">Purple</div>
+    </div>
+    <div class="panel" data-label="Aqua Green">
+      <div class="panel-content">Teal</div>
+    </div>
+  </div>
+
+  <div class="heart-cursor" id="heartCursor"></div>
+
+  <script>
+    const heart = document.getElementById('heartCursor');
+
+    const rgbToHsl = (r, g, b) => {
+      r /= 255; g /= 255; b /= 255;
+      const max = Math.max(r, g, b);
+      const min = Math.min(r, g, b);
+      let h = 0, s = 0, l = (max + min) / 2;
+      if (max !== min) {
+        const d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch (max) {
+          case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+          case g: h = (b - r) / d + 2; break;
+          case b: h = (r - g) / d + 4; break;
+        }
+        h /= 6;
+      }
+      return [h * 360, s, l];
+    };
+
+    const getContrastHeartColor = (background) => {
+      const match = background.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/i);
+      if (!match) return '#ff2d55';
+      const r = Number(match[1]);
+      const g = Number(match[2]);
+      const b = Number(match[3]);
+      const [h, s, l] = rgbToHsl(r, g, b);
+      const newHue = (h + 180) % 360;
+      return `hsl(${Math.round(newHue)}, ${Math.max(60, Math.round(s * 100))}%, ${l > 0.5 ? 35 : 65}%)`;
+    };
+
+    document.addEventListener('mousemove', (event) => {
+      heart.style.left = `${event.clientX}px`;
+      heart.style.top = `${event.clientY}px`;
+      const element = document.elementFromPoint(event.clientX, event.clientY);
+      if (!element || element === heart) return;
+      const bg = window.getComputedStyle(element).backgroundColor;
+      const color = getContrastHeartColor(bg);
+      heart.style.backgroundColor = color;
+      heart.style.boxShadow = `0 0 24px ${color}66`;
+    });
+
+    document.addEventListener('mouseleave', () => {
+      heart.style.backgroundColor = '#ff2d55';
+      heart.style.boxShadow = '0 0 18px rgba(255, 45, 85, 0.35)';
+    });
+  </script>
+</body>
+</html>
